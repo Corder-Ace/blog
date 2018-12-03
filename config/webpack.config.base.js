@@ -1,28 +1,28 @@
 module.exports = {
-    devtool: "cheap-module-source-map",
+    devtool: 'cheap-module-source-map',
     resolve: {
-        extensions: ['.js','jsx','.json'],
+        extensions: ['.js', 'jsx', '.json'],
     },
     module: {
-        rules:[
+        rules: [
             {
-                test:/\.(js|jsx)$/,
-                enforce: "pre",
-                loader:'eslint-loader'
+                test: /\.(js|jsx)$/,
+                enforce: 'pre',
+                loader: 'eslint-loader',
             },
             {
                 oneOf: [
                     {
-                        test:/\.(js|jsx)$/,
-                        loader:'babel-loader',
+                        test: /\.(js|jsx)$/,
+                        loader: 'babel-loader',
                         exclude: /node_modules/,
-                        options:{
+                        options: {
                             cacheDirectory: true,
-                            cacheCompression: false
-                        }
+                            cacheCompression: false,
+                        },
                     },
-                ]
-            }
-        ]
-    }
-}
+                ],
+            },
+        ],
+    },
+};
