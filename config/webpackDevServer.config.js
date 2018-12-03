@@ -16,9 +16,12 @@ const devServerOptions = Object.assign({}, {
     stats: 'errors-only',
     compress: true,
     // quiet: true,
-},);
+});
 const server = new WebpackDevServer(complier, devServerOptions);
 
-server.listen(3000, 'localhost', () => {
+server.listen(3000, 'localhost', (err) => {
+    if (err) {
+        console.log(err);
+    }
     console.log('Starting server on http://localhost:3000');
 });
