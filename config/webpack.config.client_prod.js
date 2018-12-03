@@ -2,7 +2,7 @@ const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCssEnv = require('postcss-preset-env');
-const postCssFlexbugFisx = require('postcss-flexbugs-fixes');
+const postCssFlexbugFix = require('postcss-flexbugs-fixes');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -82,7 +82,7 @@ module.exports = merge(webpackBase, {
                                 loader: 'postcss-loader',
                                 options: {
                                     plugins: () => [
-                                        postCssFlexbugFisx,
+                                        postCssFlexbugFix,
                                         postCssEnv(autoprefixer({
                                             browsers: [
                                                 '>1%',

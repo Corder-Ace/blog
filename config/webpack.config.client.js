@@ -3,16 +3,17 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCssEnv = require('postcss-preset-env');
-const postCssFlexbugFisx = require('postcss-flexbugs-fixes');
+const postCssFlexbugFix = require('postcss-flexbugs-fixes');
 const { getWorkSpacePath } = require('./util');
 const webpackBase = require('./webpack.config.base');
 
 module.exports = merge(webpackBase, {
     mode: 'development',
     devtool: 'eval-source-map',
-    entry: {
-        index: getWorkSpacePath('client/index.jsx'),
-    },
+    entry: [
+        getWorkSpacePath('client/index.jsx'),
+        'webpack-dev-server/client?http://localhost:3000/',
+    ],
     output: {
         path: getWorkSpacePath('build/'),
         filename: 'static/js/bundle.js',
@@ -47,7 +48,7 @@ module.exports = merge(webpackBase, {
                                 loader: 'postcss-loader',
                                 options: {
                                     plugins: () => [
-                                        postCssFlexbugFisx,
+                                        postCssFlexbugFix,
                                         postCssEnv(autoprefixer({
                                             browsers: [
                                                 '>1%',
@@ -78,17 +79,4 @@ module.exports = merge(webpackBase, {
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
-    devServer: {
-        host: 'localhost',
-        port: 3000,
-        inline: true,
-        contentBase: getWorkSpacePath('public'),
-        watchContentBase: true,
-        historyApiFallback: true,
-        hot: true,
-        overlay: false,
-        stats: 'errors-only',
-        compress: true,
-        // quiet: true,
-    },
 });
