@@ -7,7 +7,7 @@ module.exports = merge(webpackBase, {
     target: 'node',
     mode: 'development',
     entry: {
-        server: getWorkSpacePath('server/index.js'),
+        server: getWorkSpacePath('server/index.jsx'),
     },
     output: {
         path: getWorkSpacePath('node'),

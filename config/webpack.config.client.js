@@ -1,16 +1,20 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const postCssEnv = require('postcss-preset-env');
+const postCssFlexbugFisx = require('postcss-flexbugs-fixes');
 const { getWorkSpacePath } = require('./util');
 const webpackBase = require('./webpack.config.base');
 
 module.exports = merge(webpackBase, {
     mode: 'development',
+    devtool: 'eval-source-map',
     entry: {
-        index: getWorkSpacePath('client/index.js'),
+        index: getWorkSpacePath('client/index.jsx'),
     },
     output: {
-        path: getWorkSpacePath('build'),
+        path: getWorkSpacePath('build/'),
         filename: 'static/js/bundle.js',
         chunkFilename: 'static/js/[name].chunk.js',
         publicPath: '/',
@@ -32,16 +36,19 @@ module.exports = merge(webpackBase, {
                         loader: ['style-loader', 'css-loader'],
                     },
                     {
-                        test: /.scss$/,
+                        test: /\.scss$/,
                         use: [
                             {
-                                loader: 'sass-loader',
+                                loader: 'style-loader',
+                                options: { singleton: true },
                             },
+                            'css-loader',
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    plugins: ['postcss-flexbugs-fixes',
-                                        autoprefixer({
+                                    plugins: () => [
+                                        postCssFlexbugFisx,
+                                        postCssEnv(autoprefixer({
                                             browsers: [
                                                 '>1%',
                                                 'last 2 versions',
@@ -49,8 +56,11 @@ module.exports = merge(webpackBase, {
                                                 'not ie < 9',
                                             ],
                                             flexbox: 'no-2009',
-                                        })],
+                                        }))],
                                 },
+                            },
+                            {
+                                loader: 'sass-loader',
                             },
                         ],
                     },
@@ -59,6 +69,10 @@ module.exports = merge(webpackBase, {
         ],
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            inject: true,
+            template: getWorkSpacePath('public/index.html'),
+        }),
         new webpack.DefinePlugin({
             NODE_ENV: process.env.NODE_ENV || 'development',
         }),
@@ -68,12 +82,13 @@ module.exports = merge(webpackBase, {
         host: 'localhost',
         port: 3000,
         inline: true,
-        contentBase: getWorkSpacePath('public/'),
+        contentBase: getWorkSpacePath('public'),
         watchContentBase: true,
+        historyApiFallback: true,
         hot: true,
         overlay: false,
         stats: 'errors-only',
         compress: true,
-        quiet: true,
+        // quiet: true,
     },
 });

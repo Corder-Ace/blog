@@ -1,6 +1,8 @@
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const postCssEnv = require('postcss-preset-env');
+const postCssFlexbugFisx = require('postcss-flexbugs-fixes');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -11,7 +13,7 @@ module.exports = merge(webpackBase, {
     mode: 'production',
     devtool: 'source-map',
     entry: {
-        index: getWorkSpacePath('client/index.js'),
+        index: getWorkSpacePath('client/index.jsx'),
     },
     output: {
         path: getWorkSpacePath('build/'),
@@ -68,7 +70,7 @@ module.exports = merge(webpackBase, {
                         ],
                     },
                     {
-                        test: /.scss$/,
+                        test: /\.scss$/,
                         exclude: /node_modules/,
                         use: [
                             MiniCssExtractPlugin.loader,
@@ -79,8 +81,9 @@ module.exports = merge(webpackBase, {
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    plugins: () => ['postcss-flexbugs-fixes',
-                                        autoprefixer({
+                                    plugins: () => [
+                                        postCssFlexbugFisx,
+                                        postCssEnv(autoprefixer({
                                             browsers: [
                                                 '>1%',
                                                 'last 2 versions',
@@ -88,8 +91,7 @@ module.exports = merge(webpackBase, {
                                                 'not ie < 9',
                                             ],
                                             flexbox: 'no-2009',
-                                        })],
-                                    sourceMap: true,
+                                        }))],
                                 },
                             },
                             {
