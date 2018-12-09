@@ -1,4 +1,50 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const Home = () => <div>测试文件</div>;
-export default Home;
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {};
+    }
+
+    componentDidMount() {
+        const { changeTest } = this.props;
+        changeTest('01111');
+    }
+
+    render() {
+        const { test } = this.props;
+        return (
+            <div>
+                redux:
+                {test}
+            </div>
+        );
+    }
+}
+Home.propTypes = {
+    changeTest: PropTypes.func.isRequired,
+    test: PropTypes.string.isRequired,
+};
+const mapStateToProps = (state) => ({
+    test: state.test,
+});
+const mapDispatchToProps = (dispatch) => ({
+    changeTest(data) {
+        dispatch((patch) => {
+            setTimeout(() => {
+                patch({
+                    type: 'TEST',
+                    data,
+                });
+            }, 3000);
+        });
+        // dispatch({
+        //     type: 'TEST',
+        //     data,
+        // });
+    },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

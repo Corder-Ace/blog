@@ -79,4 +79,17 @@ module.exports = merge(webpackBase, {
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],
+    devServer: {
+        host: 'localhost',
+        port: 3000,
+        inline: true,
+        contentBase: getWorkSpacePath('public'),
+        watchContentBase: true,
+        historyApiFallback: true,
+        hot: true,
+        overlay: false,
+        stats: 'errors-only',
+        compress: true,
+        // quiet: true,
+    },
 });
