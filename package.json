@@ -5,16 +5,20 @@
   "author": "ace",
   "license": "MIT",
   "scripts": {
-    "dev:client": "node config/webpackDevServer.config.js",
-    "dev:test": "webpack-dev-server --config config/webpack.config.client.js",
-    "build:client": "cross-env webpack --config config/webpack.config.client_prod.js"
+    "dev:client": "webpack-dev-server --config config/webpack.config.client.js",
+    "dev:server": "nodemon --watch node --exec node \"./node/server.js\"",
+    "build:client": "cross-env webpack --config config/webpack.config.client_prod.js",
+    "build:server": "cross-env webpack --config config/webpack.config.server.js --watch"
   },
   "dependencies": {
     "@babel/core": "^7.1.6",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
     "autoprefixer": "^9.3.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
@@ -40,6 +44,7 @@
     "moment": "^2.22.2",
     "mysql2": "^1.6.4",
     "node-sass": "^4.10.0",
+    "nodemon": "^1.18.8",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.4.0",

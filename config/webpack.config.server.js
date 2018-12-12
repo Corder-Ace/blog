@@ -7,13 +7,13 @@ module.exports = merge(webpackBase, {
     target: 'node',
     mode: 'development',
     entry: {
-        server: getWorkSpacePath('server/index.jsx'),
+        server: getWorkSpacePath('server/index.js'),
     },
     output: {
         path: getWorkSpacePath('node'),
-        filename: '[name].[hash:8].js',
-        chunkFilename: '[name].chunk.js',
+        filename: 'server.js',
+        // chunkFilename: '[name].chunk.js',
         publicPath: '/',
     },
-    external: [nodeExternals()],
+    externals: [nodeExternals()],
 });
