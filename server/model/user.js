@@ -2,10 +2,6 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 class User extends Sequelize.Model {
-    // constructor(sequelize) {
-    //     super();
-    //     this.init(sequelize);
-    // }
     static init(sequelize) {
         return sequelize.define('users', {
             id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
@@ -24,7 +20,7 @@ class User extends Sequelize.Model {
         }, {
             timestamps: false,
             freezeTableName: true,
-            tableName: 'users',
+            tableName: 'user_info',
         });
     }
 }
