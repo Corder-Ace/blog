@@ -142,7 +142,7 @@ eval("\n\nvar Sequelize = __webpack_require__(/*! sequelize */ \"sequelize\");\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\"));\n\nvar Koa = __webpack_require__(/*! koa */ \"koa\");\n\nvar logger = __webpack_require__(/*! koa-logger */ \"koa-logger\");\n\nvar koaStatic = __webpack_require__(/*! koa-static */ \"koa-static\");\n\nvar path = __webpack_require__(/*! path */ \"path\");\n\nvar bodyparser = __webpack_require__(/*! koa-bodyparser */ \"koa-bodyparser\");\n\nvar users = __webpack_require__(/*! ./router/user */ \"./server/router/user.js\");\n\nvar app = new Koa();\napp.use(\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee(ctx, next) {\n    var startTime, ms;\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            startTime = +new Date();\n            _context.next = 3;\n            return next();\n\n          case 3:\n            ms = +new Date() - startTime;\n            console.log(\"\".concat(ctx.method, \": \").concat(ctx.url, \" - \").concat(ms, \":ms\"));\n\n          case 5:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\napp.use(bodyparser());\napp.use(logger());\napp.use(koaStatic(path.resolve(process.cwd(), 'server/public')));\napp.use(users.routes());\nmodule.exports = app;\n\n//# sourceURL=webpack:///./server/index.js?");
+eval("/* WEBPACK VAR INJECTION */(function(__dirname) {\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\"));\n\nvar Koa = __webpack_require__(/*! koa */ \"koa\");\n\nvar logger = __webpack_require__(/*! koa-logger */ \"koa-logger\");\n\nvar koaStatic = __webpack_require__(/*! koa-static */ \"koa-static\");\n\nvar bodyparser = __webpack_require__(/*! koa-bodyparser */ \"koa-bodyparser\");\n\nvar users = __webpack_require__(/*! ./router/user */ \"./server/router/user.js\");\n\nvar reactRouter = __webpack_require__(/*! ./router */ \"./server/router/index.js\");\n\nvar app = new Koa();\napp.use(\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee(ctx, next) {\n    var startTime, ms;\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            startTime = +new Date();\n            _context.next = 3;\n            return next();\n\n          case 3:\n            ms = +new Date() - startTime;\n            console.log(\"\".concat(ctx.method, \": \").concat(ctx.url, \" - \").concat(ms, \":ms\"));\n\n          case 5:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\napp.use(bodyparser());\napp.use(logger());\napp.use(koaStatic(__dirname + '/public')); // app.use(koaStatic(path.resolve(process.cwd(), 'server/public/static')));\n\napp.use(users.routes());\napp.use(reactRouter.routes());\napp.listen(5000);\nmodule.exports = app;\n/* WEBPACK VAR INJECTION */}.call(this, \"/\"))\n\n//# sourceURL=webpack:///./server/index.js?");
 
 /***/ }),
 
@@ -155,6 +155,18 @@ eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/he
 
 "use strict";
 eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"@babel/runtime/helpers/classCallCheck\"));\n\nvar _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ \"@babel/runtime/helpers/createClass\"));\n\nvar _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ \"@babel/runtime/helpers/possibleConstructorReturn\"));\n\nvar _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ \"@babel/runtime/helpers/getPrototypeOf\"));\n\nvar _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ \"@babel/runtime/helpers/inherits\"));\n\nvar Sequelize = __webpack_require__(/*! sequelize */ \"sequelize\");\n\nvar db = __webpack_require__(/*! ../db */ \"./server/db/index.js\");\n\nvar User =\n/*#__PURE__*/\nfunction (_Sequelize$Model) {\n  (0, _inherits2.default)(User, _Sequelize$Model);\n\n  function User() {\n    (0, _classCallCheck2.default)(this, User);\n    return (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(User).apply(this, arguments));\n  }\n\n  (0, _createClass2.default)(User, null, [{\n    key: \"init\",\n    value: function init(sequelize) {\n      return sequelize.define('users', {\n        id: {\n          type: Sequelize.INTEGER,\n          primaryKey: true,\n          autoIncrement: true\n        },\n        username: {\n          type: Sequelize.CHAR(64),\n          allowNull: false\n        },\n        account: {\n          type: Sequelize.CHAR(32),\n          allowNull: false\n        },\n        password: {\n          type: Sequelize.CHAR(32),\n          allowNull: false\n        },\n        avatar: {\n          type: Sequelize.CHAR(255)\n        },\n        email: {\n          type: Sequelize.CHAR(255),\n          allowNull: false,\n          validate: {\n            isEmail: true\n          }\n        },\n        moment: {\n          type: Sequelize.CHAR(255),\n          defaultValue: Sequelize.NOW\n        }\n      }, {\n        timestamps: false,\n        freezeTableName: true,\n        tableName: 'user_info'\n      });\n    }\n  }]);\n  return User;\n}(Sequelize.Model);\n\nvar UserModel = User.init(db);\nUserModel.sync({\n  force: false\n});\nmodule.exports = UserModel;\n\n//# sourceURL=webpack:///./server/model/user.js?");
+
+/***/ }),
+
+/***/ "./server/router/index.js":
+/*!********************************!*\
+  !*** ./server/router/index.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\"));\n\nvar _require = __webpack_require__(/*! react-router-dom */ \"react-router-dom\"),\n    Route = _require.Route;\n\nvar _require2 = __webpack_require__(/*! react-dom/server */ \"react-dom/server\"),\n    renderToString = _require2.renderToString;\n\nvar router = __webpack_require__(/*! koa-router */ \"koa-router\")();\n\nvar React = __webpack_require__(/*! react */ \"react\");\n\nvar _require3 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\"),\n    StaticRouter = _require3.StaticRouter;\n\nvar App = function App() {\n  return React.createElement(\"div\", null, React.createElement(\"h1\", null, \"12321312412312\"));\n};\n\nrouter.get('/',\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee(ctx, req) {\n    var content;\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            content = renderToString(React.createElement(StaticRouter, {\n              location: req.url,\n              context: {}\n            }, React.createElement(Route, {\n              path: \"/\",\n              component: App\n            })));\n            ctx.body = content;\n\n          case 2:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\nmodule.exports = router;\n\n//# sourceURL=webpack:///./server/router/index.js?");
 
 /***/ }),
 
@@ -335,14 +347,36 @@ eval("module.exports = require(\"moment\");\n\n//# sourceURL=webpack:///external
 
 /***/ }),
 
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
+/***/ "react":
+/*!************************!*\
+  !*** external "react" ***!
+  \************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%22path%22?");
+eval("module.exports = require(\"react\");\n\n//# sourceURL=webpack:///external_%22react%22?");
+
+/***/ }),
+
+/***/ "react-dom/server":
+/*!***********************************!*\
+  !*** external "react-dom/server" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:///external_%22react-dom/server%22?");
+
+/***/ }),
+
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
 
 /***/ }),
 

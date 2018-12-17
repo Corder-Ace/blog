@@ -3,6 +3,7 @@ const logger = require('koa-logger');
 const koaStatic = require('koa-static');
 const bodyparser = require('koa-bodyparser');
 const users = require('./router/user');
+const reactRouter = require('./router');
 
 const app = new Koa();
 
@@ -17,5 +18,7 @@ app.use(logger());
 app.use(koaStatic(__dirname + '/public'));
 // app.use(koaStatic(path.resolve(process.cwd(), 'server/public/static')));
 app.use(users.routes());
+app.use(reactRouter.routes());
 
+app.listen(5000);
 module.exports = app;

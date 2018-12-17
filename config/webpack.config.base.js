@@ -4,11 +4,11 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.(js|jsx)$/,
-                enforce: 'pre',
-                loader: 'eslint-loader',
-            },
+            // {
+            //     test: /\.(js|jsx)$/,
+            //     enforce: 'pre',
+            //     loader: 'eslint-loader',
+            // },
             {
                 oneOf: [
                     {
