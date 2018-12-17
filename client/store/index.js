@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { applyMiddleware, compose } from 'redux';
 import createResetStore from '../utils/createResetStore';
 
 export const defaultState = {
@@ -29,5 +29,5 @@ function createThunkMiddleware(extraArgument) {
 const storeEnhancers = compose(
     applyMiddleware(createThunkMiddleware()),
 );
-const store = createResetStore(createStore)(reducer, storeEnhancers);
+const store = createResetStore(reducer, storeEnhancers);
 export default store;

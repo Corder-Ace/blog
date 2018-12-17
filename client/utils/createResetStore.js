@@ -1,3 +1,5 @@
+import { createStore } from 'redux';
+
 const RESET_ACTION_TYPE = '@@RESET';
 
 const resetReducerCreator = (reducer, restState) => (state, action) => {
@@ -7,8 +9,8 @@ const resetReducerCreator = (reducer, restState) => (state, action) => {
     return reducer(state, action);
 };
 
-const restore = (createStore) => (reducer, preloadState, enhancer) => {
-    const store = createStore(reducer, preloadState, enhancer);
+const restore = (createBaseStore) => (reducer, preloadState, enhancer) => {
+    const store = createBaseStore(reducer, preloadState, enhancer);
 
     const reset = (resetReducer, resetState) => {
         const newReducer = resetReducerCreator(resetReducer, resetState);
@@ -22,4 +24,4 @@ const restore = (createStore) => (reducer, preloadState, enhancer) => {
     };
 };
 
-export default restore;
+export default restore(createStore);
