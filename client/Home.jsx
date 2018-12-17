@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import store, { reducer, defaultState } from './store';
 
 class Home extends React.Component {
     constructor(props) {
@@ -12,6 +13,9 @@ class Home extends React.Component {
     componentDidMount() {
         const { changeTest } = this.props;
         changeTest('01111');
+        setTimeout(() => {
+            store.reset(reducer, defaultState);
+        }, 10000);
     }
 
     render() {

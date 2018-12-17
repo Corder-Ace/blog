@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import createResetStore from '../utils/createResetStore';
 
-const defaultState = {
+export const defaultState = {
     test: '1',
 };
-const reducer = (state = defaultState, action) => {
+export const reducer = (state = defaultState, action) => {
     switch (action.type) {
     case 'TEST': {
         return Object.assign({}, state, {
@@ -15,6 +16,7 @@ const reducer = (state = defaultState, action) => {
     }
 };
 
+// thunk 支持dispatch一个函数
 function createThunkMiddleware(extraArgument) {
     return ({ dispatch, getState }) => (next) => (action) => {
         if (typeof action === 'function') {
@@ -24,9 +26,8 @@ function createThunkMiddleware(extraArgument) {
     };
 }
 
-
 const storeEnhancers = compose(
     applyMiddleware(createThunkMiddleware()),
 );
-const store = createStore(reducer, storeEnhancers);
+const store = createResetStore(createStore)(reducer, storeEnhancers);
 export default store;
