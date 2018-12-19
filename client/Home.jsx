@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import CuteDown from './CuteDown';
 import store, { reducer, defaultState } from './store';
 
 class Home extends React.Component {
@@ -24,6 +25,9 @@ class Home extends React.Component {
             <div>
                 redux:
                 {test}
+                <CuteDown time={60}>
+                    {(time) => <span>{time}</span>}
+                </CuteDown>
             </div>
         );
     }
@@ -45,10 +49,6 @@ const mapDispatchToProps = (dispatch) => ({
                 });
             }, 3000);
         });
-        // dispatch({
-        //     type: 'TEST',
-        //     data,
-        // });
     },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
