@@ -14,23 +14,31 @@ module.exports = merge(webpackBase, {
     devtool: 'source-map',
     entry: {
         index: getWorkSpacePath('src/client/index.jsx'),
+        // react_vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
     },
     output: {
         path: getWorkSpacePath('build/'),
-        filename: 'static/js/bundle.js',
-        chunkFilename: 'static/js/[name].chunk.js',
+        filename: 'static/js/bundle.[chunkhash:8].js',
+        chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
         publicPath: '/',
     },
     optimization: {
+        minimize: true,
         splitChunks: {
             cacheGroups: {
-                commons: {
+                vendor: {
                     test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
+                    name: 'vendor',
                     chunks: 'all',
+                },
+                commons: {
+                    chunks: 'initial',
+                    minChunks: 2,
+                    minSize: 0,
                 },
             },
         },
+        runtimeChunk: 'single',
     },
     module: {
         rules: [
@@ -119,6 +127,6 @@ module.exports = merge(webpackBase, {
             template: getWorkSpacePath('public/index.html'),
             favicon: getWorkSpacePath('public/favicon.ico'),
         }),
-        new CleanWebpackPlugin(['build']),
+        new CleanWebpackPlugin([getWorkSpacePath('build')]),
     ],
 });
