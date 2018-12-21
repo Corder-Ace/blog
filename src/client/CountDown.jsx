@@ -1,20 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class CuteDown extends React.Component {
+class CountDown extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cuteTime: props.time,
+            countTime: props.time,
         };
     }
 
     componentDidMount() {
         this.intervalHandle = setInterval(() => {
-            const { cuteTime } = this.state;
-            if (cuteTime > 0) {
-                const newCount = cuteTime - 1;
-                this.setState({ cuteTime: newCount });
+            const { countTime } = this.state;
+            if (countTime > 0) {
+                const newCount = countTime - 1;
+                this.setState({ countTime: newCount });
             } else {
                 clearInterval(this.intervalHandle);
             }
@@ -23,16 +23,16 @@ class CuteDown extends React.Component {
 
     render() {
         const { children } = this.props;
-        const { cuteTime } = this.state;
+        const { countTime } = this.state;
         return (
             <div>
-                {children(cuteTime)}
+                {children(countTime)}
             </div>);
     }
 }
 
-CuteDown.propTypes = {
+CountDown.propTypes = {
     children: PropTypes.func.isRequired,
     time: PropTypes.number.isRequired,
 };
-export default CuteDown;
+export default CountDown;

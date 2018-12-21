@@ -13,7 +13,7 @@ module.exports = merge(webpackBase, {
     mode: 'production',
     devtool: 'source-map',
     entry: {
-        index: getWorkSpacePath('client/index.jsx'),
+        index: getWorkSpacePath('src/client/index.jsx'),
     },
     output: {
         path: getWorkSpacePath('build/'),

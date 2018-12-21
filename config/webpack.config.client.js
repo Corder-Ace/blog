@@ -11,7 +11,7 @@ module.exports = merge(webpackBase, {
     mode: 'development',
     devtool: 'eval-source-map',
     entry: [
-        getWorkSpacePath('client/index.jsx'),
+        getWorkSpacePath('src/client/index.jsx'),
         'webpack-dev-server/client?http://localhost:3000/',
     ],
     output: {

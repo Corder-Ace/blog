@@ -1,6 +1,12 @@
+const { getWorkSpacePath } = require('./util');
+
 module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
+        alias: {
+            '@components': getWorkSpacePath('src/components'),
+            '@utils': getWorkSpacePath('src/routes'),
+        },
     },
     module: {
         rules: [

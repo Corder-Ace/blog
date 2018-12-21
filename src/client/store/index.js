@@ -15,7 +15,6 @@ export const reducer = (state = defaultState, action) => {
         return state;
     }
 };
-
 // thunk 支持dispatch一个函数
 function createThunkMiddleware(extraArgument) {
     return ({ dispatch, getState }) => (next) => (action) => {
@@ -25,7 +24,6 @@ function createThunkMiddleware(extraArgument) {
         return next(action);
     };
 }
-
 const storeEnhancers = compose(
     applyMiddleware(createThunkMiddleware()),
 );

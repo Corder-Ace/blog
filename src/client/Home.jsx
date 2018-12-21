@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CuteDown from './CuteDown';
+import CountDown from './CountDown';
 import store, { reducer, defaultState } from './store';
 
 class Home extends React.Component {
@@ -25,9 +25,9 @@ class Home extends React.Component {
             <div>
                 redux:
                 {test}
-                <CuteDown time={60}>
+                <CountDown time={60}>
                     {(time) => <span>{time}</span>}
-                </CuteDown>
+                </CountDown>
             </div>
         );
     }
