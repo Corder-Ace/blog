@@ -127,6 +127,8 @@ module.exports = merge(webpackBase, {
             template: getWorkSpacePath('public/index.html'),
             favicon: getWorkSpacePath('public/favicon.ico'),
         }),
-        new CleanWebpackPlugin([getWorkSpacePath('build')]),
+        new CleanWebpackPlugin(['build'], {
+            root: process.cwd(),
+        }),
     ],
 });

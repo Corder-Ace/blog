@@ -7,8 +7,8 @@
   "scripts": {
     "dev:client": "webpack-dev-server --config config/webpack.config.client.js",
     "dev:server": "nodemon --watch node --exec node \"./node/server.js\"",
-    "build:client": "cross-env webpack --config config/webpack.config.client_prod.js",
-    "build:server": "cross-env webpack --config config/webpack.config.server.js --watch"
+    "build:client": "webpack --config config/webpack.config.client_prod.js",
+    "build:server": "webpack --config config/webpack.config.server.js --watch"
   },
   "dependencies": {
     "@babel/core": "^7.1.6",

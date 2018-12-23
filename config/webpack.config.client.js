@@ -87,9 +87,10 @@ module.exports = merge(webpackBase, {
         watchContentBase: true,
         historyApiFallback: true,
         hot: true,
-        overlay: false,
+        overlay: {
+            errors: true,
+        },
         stats: 'errors-only',
         compress: true,
-        // quiet: true,
     },
 });

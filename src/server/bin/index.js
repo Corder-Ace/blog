@@ -15,7 +15,7 @@ function normalizePort(port) {
     return false;
 }
 const port = normalizePort(process.env.PORT || '5000');
-console.log(port);
+
 const server = http.createServer(app.callback());
 
 server.listen(port);
