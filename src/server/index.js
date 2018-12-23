@@ -3,10 +3,17 @@ const logger = require('koa-logger');
 const koaStatic = require('koa-static');
 const path = require('path');
 const bodyparser = require('koa-bodyparser');
+const router = require('koa-router')();
 const users = require('./router/user');
+const { transformComponentToString } = require('./utils');
+const App = require('../client/Home').default;
 
 const app = new Koa();
+router.get('*', async (ctx) => {
+    console.log(ctx.url);
 
+    ctx.body = transformComponentToString(App);
+});
 app.use(async (ctx, next) => {
     const startTime = +new Date();
     await next();
@@ -16,6 +23,8 @@ app.use(async (ctx, next) => {
 app.use(bodyparser());
 app.use(logger());
 app.use(koaStatic(path.resolve(process.cwd(), 'server/public')));
+app.use(router.routes());
 app.use(users.routes());
 
+app.listen(3000);
 module.exports = app;
