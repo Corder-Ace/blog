@@ -86,51 +86,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/client/CountDown.jsx":
-/*!**********************************!*\
-  !*** ./src/client/CountDown.jsx ***!
-  \**********************************/
+/***/ "./src/client/App.jsx":
+/*!****************************!*\
+  !*** ./src/client/App.jsx ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"@babel/runtime/helpers/classCallCheck\"));\n\nvar _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ \"@babel/runtime/helpers/createClass\"));\n\nvar _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ \"@babel/runtime/helpers/possibleConstructorReturn\"));\n\nvar _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ \"@babel/runtime/helpers/getPrototypeOf\"));\n\nvar _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ \"@babel/runtime/helpers/inherits\"));\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"prop-types\"));\n\nvar CountDown =\n/*#__PURE__*/\nfunction (_React$Component) {\n  (0, _inherits2.default)(CountDown, _React$Component);\n\n  function CountDown(props) {\n    var _this;\n\n    (0, _classCallCheck2.default)(this, CountDown);\n    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(CountDown).call(this, props));\n    _this.state = {\n      countTime: props.time\n    };\n    return _this;\n  }\n\n  (0, _createClass2.default)(CountDown, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      var _this2 = this;\n\n      this.intervalHandle = setInterval(function () {\n        var countTime = _this2.state.countTime;\n\n        if (countTime > 0) {\n          var newCount = countTime - 1;\n\n          _this2.setState({\n            countTime: newCount\n          });\n        } else {\n          clearInterval(_this2.intervalHandle);\n        }\n      }, 100);\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      var children = this.props.children;\n      var countTime = this.state.countTime;\n      return _react.default.createElement(\"div\", null, children(countTime));\n    }\n  }]);\n  return CountDown;\n}(_react.default.Component);\n\nCountDown.propTypes = {\n  children: _propTypes.default.func.isRequired,\n  time: _propTypes.default.number.isRequired\n};\nvar _default = CountDown;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/CountDown.jsx?");
-
-/***/ }),
-
-/***/ "./src/client/Home.jsx":
-/*!*****************************!*\
-  !*** ./src/client/Home.jsx ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _interopRequireWildcard = __webpack_require__(/*! @babel/runtime/helpers/interopRequireWildcard */ \"@babel/runtime/helpers/interopRequireWildcard\");\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _classCallCheck2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ \"@babel/runtime/helpers/classCallCheck\"));\n\nvar _createClass2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/createClass */ \"@babel/runtime/helpers/createClass\"));\n\nvar _possibleConstructorReturn2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ \"@babel/runtime/helpers/possibleConstructorReturn\"));\n\nvar _getPrototypeOf2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ \"@babel/runtime/helpers/getPrototypeOf\"));\n\nvar _inherits2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/inherits */ \"@babel/runtime/helpers/inherits\"));\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _propTypes = _interopRequireDefault(__webpack_require__(/*! prop-types */ \"prop-types\"));\n\nvar _CountDown = _interopRequireDefault(__webpack_require__(/*! ./CountDown */ \"./src/client/CountDown.jsx\"));\n\nvar _store = _interopRequireWildcard(__webpack_require__(/*! ./store */ \"./src/client/store/index.js\"));\n\nvar Home =\n/*#__PURE__*/\nfunction (_React$Component) {\n  (0, _inherits2.default)(Home, _React$Component);\n\n  function Home(props) {\n    var _this;\n\n    (0, _classCallCheck2.default)(this, Home);\n    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Home).call(this, props));\n    _this.state = {};\n    return _this;\n  }\n\n  (0, _createClass2.default)(Home, [{\n    key: \"componentDidMount\",\n    value: function componentDidMount() {\n      var changeTest = this.props.changeTest;\n      changeTest('01111');\n      setTimeout(function () {\n        _store.default.reset(_store.reducer, _store.defaultState);\n      }, 10000);\n    }\n  }, {\n    key: \"render\",\n    value: function render() {\n      var test = this.props.test;\n      return _react.default.createElement(\"div\", null, \"redux:\", test, _react.default.createElement(_CountDown.default, {\n        time: 60\n      }, function (time) {\n        return _react.default.createElement(\"span\", null, time);\n      }));\n    }\n  }]);\n  return Home;\n}(_react.default.Component);\n\nHome.propTypes = {\n  changeTest: _propTypes.default.func.isRequired,\n  test: _propTypes.default.string.isRequired\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    test: state.test\n  };\n};\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    changeTest: function changeTest(data) {\n      dispatch(function (patch) {\n        setTimeout(function () {\n          patch({\n            type: 'TEST',\n            data: data\n          });\n        }, 3000);\n      });\n    }\n  };\n};\n\nvar _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/Home.jsx?");
-
-/***/ }),
-
-/***/ "./src/client/store/index.js":
-/*!***********************************!*\
-  !*** ./src/client/store/index.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = exports.reducer = exports.defaultState = void 0;\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _createResetStore = _interopRequireDefault(__webpack_require__(/*! ../utils/createResetStore */ \"./src/client/utils/createResetStore.js\"));\n\nvar defaultState = {\n  test: '1'\n};\nexports.defaultState = defaultState;\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case 'TEST':\n      {\n        return Object.assign({}, state, {\n          test: action.data\n        });\n      }\n\n    default:\n      return state;\n  }\n}; // thunk 支持dispatch一个函数\n\n\nexports.reducer = reducer;\n\nfunction createThunkMiddleware(extraArgument) {\n  return function (_ref) {\n    var dispatch = _ref.dispatch,\n        getState = _ref.getState;\n    return function (next) {\n      return function (action) {\n        if (typeof action === 'function') {\n          return action(dispatch, getState, extraArgument);\n        }\n\n        return next(action);\n      };\n    };\n  };\n}\n\nvar storeEnhancers = (0, _redux.compose)((0, _redux.applyMiddleware)(createThunkMiddleware()));\nvar store = (0, _createResetStore.default)(reducer, storeEnhancers);\nvar _default = store;\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/store/index.js?");
-
-/***/ }),
-
-/***/ "./src/client/utils/createResetStore.js":
-/*!**********************************************!*\
-  !*** ./src/client/utils/createResetStore.js ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _objectSpread2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/objectSpread */ \"@babel/runtime/helpers/objectSpread\"));\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar RESET_ACTION_TYPE = '@@RESET';\n\nvar resetReducerCreator = function resetReducerCreator(reducer, restState) {\n  return function (state, action) {\n    if (action.type === RESET_ACTION_TYPE) {\n      return restState;\n    }\n\n    return reducer(state, action);\n  };\n};\n\nvar restore = function restore(createBaseStore) {\n  return function (reducer, preloadState, enhancer) {\n    var store = createBaseStore(reducer, preloadState, enhancer);\n\n    var reset = function reset(resetReducer, resetState) {\n      var newReducer = resetReducerCreator(resetReducer, resetState);\n      store.replaceReducer(newReducer);\n      store.dispatch({\n        type: RESET_ACTION_TYPE,\n        state: resetState\n      });\n    };\n\n    return (0, _objectSpread2.default)({\n      reset: reset\n    }, store);\n  };\n};\n\nvar _default = restore(_redux.createStore);\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/utils/createResetStore.js?");
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.default = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"react\"));\n\nvar _default = function _default() {\n  return _react.default.createElement(\"div\", null, \"123\");\n};\n\nexports.default = _default;\n\n//# sourceURL=webpack:///./src/client/App.jsx?");
 
 /***/ }),
 
@@ -190,7 +154,7 @@ eval("\n\nvar Sequelize = __webpack_require__(/*! sequelize */ \"sequelize\");\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\"));\n\nvar Koa = __webpack_require__(/*! koa */ \"koa\");\n\nvar logger = __webpack_require__(/*! koa-logger */ \"koa-logger\");\n\nvar koaStatic = __webpack_require__(/*! koa-static */ \"koa-static\");\n\nvar path = __webpack_require__(/*! path */ \"path\");\n\nvar bodyparser = __webpack_require__(/*! koa-bodyparser */ \"koa-bodyparser\");\n\nvar router = __webpack_require__(/*! koa-router */ \"koa-router\")();\n\nvar users = __webpack_require__(/*! ./router/user */ \"./src/server/router/user.js\");\n\nvar _require = __webpack_require__(/*! ./utils */ \"./src/server/utils/index.js\"),\n    transformComponentToString = _require.transformComponentToString;\n\nvar App = __webpack_require__(/*! ../client/Home */ \"./src/client/Home.jsx\").default;\n\nvar app = new Koa();\nrouter.get('*',\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee(ctx) {\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            console.log(ctx.url);\n            ctx.body = transformComponentToString(App);\n\n          case 2:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function (_x) {\n    return _ref.apply(this, arguments);\n  };\n}());\napp.use(\n/*#__PURE__*/\nfunction () {\n  var _ref2 = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee2(ctx, next) {\n    var startTime, ms;\n    return _regenerator.default.wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            startTime = +new Date();\n            _context2.next = 3;\n            return next();\n\n          case 3:\n            ms = +new Date() - startTime;\n            console.log(\"\".concat(ctx.method, \": \").concat(ctx.url, \" - \").concat(ms, \":ms\"));\n\n          case 5:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2, this);\n  }));\n\n  return function (_x2, _x3) {\n    return _ref2.apply(this, arguments);\n  };\n}());\napp.use(bodyparser());\napp.use(logger());\napp.use(koaStatic(path.resolve(process.cwd(), 'server/public')));\napp.use(router.routes());\napp.use(users.routes());\napp.listen(3000);\nmodule.exports = app;\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/helpers/interopRequireDefault */ \"@babel/runtime/helpers/interopRequireDefault\");\n\nvar _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\"));\n\nvar _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\"));\n\nvar Koa = __webpack_require__(/*! koa */ \"koa\");\n\nvar logger = __webpack_require__(/*! koa-logger */ \"koa-logger\");\n\nvar koaStatic = __webpack_require__(/*! koa-static */ \"koa-static\");\n\nvar path = __webpack_require__(/*! path */ \"path\");\n\nvar bodyparser = __webpack_require__(/*! koa-bodyparser */ \"koa-bodyparser\");\n\nvar router = __webpack_require__(/*! koa-router */ \"koa-router\")();\n\nvar users = __webpack_require__(/*! ./router/user */ \"./src/server/router/user.js\");\n\nvar _require = __webpack_require__(/*! ./utils */ \"./src/server/utils/index.js\"),\n    transformComponentToString = _require.transformComponentToString;\n\nvar App = __webpack_require__(/*! ../client/App */ \"./src/client/App.jsx\").default;\n\nvar app = new Koa();\nrouter.get('*',\n/*#__PURE__*/\nfunction () {\n  var _ref = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee(ctx, req) {\n    return _regenerator.default.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            console.log(ctx.url);\n            ctx.body = transformComponentToString(req, App);\n\n          case 2:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, this);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\napp.use(\n/*#__PURE__*/\nfunction () {\n  var _ref2 = (0, _asyncToGenerator2.default)(\n  /*#__PURE__*/\n  _regenerator.default.mark(function _callee2(ctx, next) {\n    var startTime, ms;\n    return _regenerator.default.wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            startTime = +new Date();\n            _context2.next = 3;\n            return next();\n\n          case 3:\n            ms = +new Date() - startTime;\n            console.log(\"\".concat(ctx.method, \": \").concat(ctx.url, \" - \").concat(ms, \":ms\"));\n\n          case 5:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2, this);\n  }));\n\n  return function (_x3, _x4) {\n    return _ref2.apply(this, arguments);\n  };\n}());\napp.use(bodyparser());\napp.use(logger());\napp.use(koaStatic(path.resolve(process.cwd(), 'server/public')));\napp.use(router.routes());\napp.use(users.routes());\napp.listen(5000);\nmodule.exports = app;\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -226,7 +190,7 @@ eval("\n\nvar _interopRequireDefault = __webpack_require__(/*! @babel/runtime/he
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar React = __webpack_require__(/*! react */ \"react\");\n\nvar ReactDOM = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar fs = __webpack_require__(/*! fs */ \"fs\");\n\nvar path = __webpack_require__(/*! path */ \"path\"); // 读取模板内容\n\n\nvar template = fs.readFileSync(path.join(process.cwd(), 'public/index.html'), 'utf-8');\n\nfunction transformComponentToString(component) {\n  var componentString = ReactDOM.renderToString(component);\n  return template.replace('<!-- app -->', componentString);\n}\n\nmodule.exports = {\n  transformComponentToString: transformComponentToString\n};\n\n//# sourceURL=webpack:///./src/server/utils/index.js?");
+eval("\n\nvar React = __webpack_require__(/*! react */ \"react\");\n\nvar _require = __webpack_require__(/*! react-dom/server */ \"react-dom/server\"),\n    renderToString = _require.renderToString;\n\nvar _require2 = __webpack_require__(/*! react-router-dom */ \"react-router-dom\"),\n    StaticRouter = _require2.StaticRouter,\n    Route = _require2.Route;\n\nvar fs = __webpack_require__(/*! fs */ \"fs\");\n\nvar path = __webpack_require__(/*! path */ \"path\"); // 读取模板内容\n\n\nvar template = fs.readFileSync(path.join(process.cwd(), 'public/index.html'), 'utf-8');\n\nfunction transformComponentToString(req, component) {\n  var content = React.createElement(StaticRouter, {\n    location: req.url,\n    context: {}\n  }, React.createElement(Route, {\n    exact: true,\n    path: \"/\",\n    component: component\n  }));\n  var componentString = renderToString(content);\n  return template.replace('<!-- app -->', componentString);\n}\n\nmodule.exports = {\n  transformComponentToString: transformComponentToString\n};\n\n//# sourceURL=webpack:///./src/server/utils/index.js?");
 
 /***/ }),
 
@@ -293,17 +257,6 @@ eval("module.exports = require(\"@babel/runtime/helpers/inherits\");\n\n//# sour
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"@babel/runtime/helpers/interopRequireDefault\");\n\n//# sourceURL=webpack:///external_%22@babel/runtime/helpers/interopRequireDefault%22?");
-
-/***/ }),
-
-/***/ "@babel/runtime/helpers/interopRequireWildcard":
-/*!****************************************************************!*\
-  !*** external "@babel/runtime/helpers/interopRequireWildcard" ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"@babel/runtime/helpers/interopRequireWildcard\");\n\n//# sourceURL=webpack:///external_%22@babel/runtime/helpers/interopRequireWildcard%22?");
 
 /***/ }),
 
@@ -428,17 +381,6 @@ eval("module.exports = require(\"path\");\n\n//# sourceURL=webpack:///external_%
 
 /***/ }),
 
-/***/ "prop-types":
-/*!*****************************!*\
-  !*** external "prop-types" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"prop-types\");\n\n//# sourceURL=webpack:///external_%22prop-types%22?");
-
-/***/ }),
-
 /***/ "react":
 /*!************************!*\
   !*** external "react" ***!
@@ -461,25 +403,14 @@ eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:/
 
 /***/ }),
 
-/***/ "react-redux":
-/*!******************************!*\
-  !*** external "react-redux" ***!
-  \******************************/
+/***/ "react-router-dom":
+/*!***********************************!*\
+  !*** external "react-router-dom" ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///external_%22react-redux%22?");
-
-/***/ }),
-
-/***/ "redux":
-/*!************************!*\
-  !*** external "redux" ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"redux\");\n\n//# sourceURL=webpack:///external_%22redux%22?");
+eval("module.exports = require(\"react-router-dom\");\n\n//# sourceURL=webpack:///external_%22react-router-dom%22?");
 
 /***/ }),
 
