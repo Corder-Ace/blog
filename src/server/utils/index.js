@@ -7,6 +7,6 @@ const path = require('path');
 const template = fs.readFileSync(path.join(process.cwd(), 'public/index.html'), 'utf-8');
 function transformComponentToString(req, res, component) {
     const componentString = ReactDOM.renderToString(component);
-    template.replace('<app></app>', componentString);
+    template.replace('<!-- app -->', componentString);
     return template;
 }
