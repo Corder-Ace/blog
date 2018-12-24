@@ -1,7 +1,7 @@
 const Webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const webpackConfig = require('./webpack.config.client');
-const { getWorkSpacePath } = require('./util');
+const { getWorkSpacePath } = require('./utils');
 
 const complier = Webpack(webpackConfig);
 const devServerOptions = Object.assign({}, {

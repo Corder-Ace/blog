@@ -1,4 +1,4 @@
-const { getWorkSpacePath } = require('./util');
+const { getWorkSpacePath } = require('./utils');
 
 module.exports = {
     resolve: {

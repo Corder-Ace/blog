@@ -6,7 +6,7 @@ const postCssFlexbugFix = require('postcss-flexbugs-fixes');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { getWorkSpacePath } = require('./util');
+const { getWorkSpacePath } = require('./utils');
 const webpackBase = require('./webpack.config.base');
 
 module.exports = merge(webpackBase, {

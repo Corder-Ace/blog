@@ -1,7 +1,7 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const webpackBase = require('./webpack.config.base');
-const { getWorkSpacePath } = require('./util');
+const { getWorkSpacePath } = require('./utils');
 
 module.exports = merge(webpackBase, {
     target: 'node',

@@ -4,7 +4,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const postCssEnv = require('postcss-preset-env');
 const postCssFlexbugFix = require('postcss-flexbugs-fixes');
-const { getWorkSpacePath } = require('./util');
+const { getWorkSpacePath } = require('./utils');
 const webpackBase = require('./webpack.config.base');
 
 module.exports = merge(webpackBase, {
