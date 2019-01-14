@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 class CountDown extends React.Component {
     constructor(props) {
@@ -22,11 +23,13 @@ class CountDown extends React.Component {
     }
 
     render() {
-        const { children } = this.props;
+        const { children, change, count } = this.props;
         const { countTime } = this.state;
+        console.log(count);
         return (
             <div>
                 {children(countTime)}
+                <button type="button" onClick={() => change(10)}>测试</button>
             </div>);
     }
 }
@@ -34,5 +37,15 @@ class CountDown extends React.Component {
 CountDown.propTypes = {
     children: PropTypes.func.isRequired,
     time: PropTypes.number.isRequired,
+    count: PropTypes.number.isRequired,
+    change: PropTypes.func.isRequired,
 };
-export default CountDown;
+const mapStateToProps = (state) => ({
+    count: state.count,
+});
+const mapDispatchToProps = (dispatch) => ({
+    change(count) {
+        dispatch({ type: 'CHANGE', count });
+    },
+});
+export default connect(mapStateToProps, mapDispatchToProps)(CountDown);

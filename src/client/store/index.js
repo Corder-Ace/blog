@@ -3,6 +3,7 @@ import createResetStore from '../utils/createResetStore';
 
 export const defaultState = {
     test: '1',
+    count: 2,
 };
 export const reducer = (state = defaultState, action) => {
     switch (action.type) {
@@ -10,6 +11,9 @@ export const reducer = (state = defaultState, action) => {
         return Object.assign({}, state, {
             test: action.data,
         });
+    }
+    case 'CHANGE': {
+        return { ...state, count: action.count };
     }
     default:
         return state;

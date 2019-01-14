@@ -14,7 +14,7 @@ module.exports = merge(webpackBase, {
     devtool: 'source-map',
     entry: {
         index: getWorkSpacePath('src/client/index.jsx'),
-        // react_vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
+        react_vendor: ['react', 'react-dom', 'react-router-dom', 'redux', 'react-redux'],
     },
     output: {
         path: getWorkSpacePath('build/'),
@@ -26,15 +26,15 @@ module.exports = merge(webpackBase, {
         minimize: true,
         splitChunks: {
             cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendor',
-                    chunks: 'all',
-                },
+                // vendor: {
+                //     chunks: 'all',
+                //     test: /[\\/]node_modules[\\/]/,
+                //     name: 'vendor',
+                // },
                 commons: {
-                    chunks: 'initial',
                     minChunks: 2,
                     minSize: 0,
+                    name: 'commons',
                 },
             },
         },
